@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeDrop - Blood Donation Camp</title>
+</head>
+
+<body>
+
+    <header>
+        <h2>♥ LifeDrop</h2>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#camp">Camp Details</a>
+            <a href="#apply">Apply</a>
+            <button onclick="loginModal.showModal()">Log In</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Donate Blood, Save Lives!</h1>
+            <p>
+                Your one donation can bring hope to someone in need.
+                Join our Blood Donation Camp and become a lifesaver.
+            </p>
+            <a href="#apply">Apply for the Camp</a>
+        </section>
+
+        <section id="about">
+            <h2>Why Donate Blood?</h2>
+            <h3>❤️ Save Lives</h3>
+            <p>Your donation can help patients who need blood.</p>
+
+            <h3>🤝 Help Others</h3>
+            <p>Support your community through voluntary donation.</p>
+
+            <h3>🩺 Donate Safely</h3>
+            <p>Qualified medical staff assess donor eligibility.</p>
+        </section>
+
+        <section id="camp">
+            <h2>Blood Donation Camp Details</h2>
+            <p><strong>Event:</strong> Blood Donation Camp</p>
+            <p><strong>Date:</strong> To be announced</p>
+            <p><strong>Time:</strong> To be announced</p>
+            <p><strong>Venue:</strong> Add your college or venue</p>
+            <p><strong>Organizer:</strong> LifeDrop Team</p>
+            <p><strong>Contact:</strong> Add organizer contact details</p>
+        </section>
+
+        <section id="apply">
+            <h2>Apply for the Camp</h2>
+
+            <form id="applicationForm">
+                <p>
+                    <label for="name">Full Name</label><br>
+                    <input type="text" id="name" required maxlength="100">
+                </p>
+
+                <p>
+                    <label for="age">Age</label><br>
+                    <input type="number" id="age" min="18" max="100" required>
+                </p>
+
+                <p>
+                    <label for="email">Email Address</label><br>
+                    <input type="email" id="email" required>
+                </p>
+
+                <p>
+                    <label for="phone">Phone Number</label><br>
+                    <input type="tel" id="phone" pattern="[0-9+\-\s]{8,16}" required>
+                </p>
+
+                <p>
+                    <label for="blood">Blood Group (if known)</label><br>
+                    <select id="blood">
+                        <option value="">Select Blood Group</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                        <option>Unknown</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label>
+                        <input type="checkbox" id="consent" required>
+                        I agree to be contacted about the camp.
+                    </label>
+                </p>
+
+                <button type="submit">Submit Application</button>
+                <p id="applicationMessage"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>♥ LifeDrop Blood Donation Camp</p>
+        <p>Be a donor. Be a hero.</p>
+    </footer>
+
+    <!-- Login popup -->
+    <dialog id="loginModal">
+        <button onclick="loginModal.close()">X</button>
+        <h2>Log In</h2>
+
+        <form id="loginForm">
+            <p>
+                <label for="loginEmail">Email Address</label><br>
+                <input type="email" id="loginEmail" required>
+            </p>
+
+            <p>
+                <label for="loginPassword">Password</label><br>
+                <input type="password" id="loginPassword" minlength="4" required>
+            </p>
+
+            <button type="submit">Log In</button>
+            <p id="loginMessage"></p>
+
+            <small>
+                Demo only. Real account authentication is not implemented.
+                Do not enter a real password.
+            </small>
+        </form>
+    </dialog>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            loginMessage.textContent =
+                "Demo login displayed for " + loginEmail.value + ". No account was created.";
+            loginPassword.value = "";
+        });
+
+        document.getElementById("applicationForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const reference = "LD-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+
+            applicationMessage.textContent =
+                "Demo application completed! Reference: " + reference +
+                ". This has not been sent to the organizer.";
+
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
